@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frauensache: Stil im Wandel – Fashion Event</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --red: #8B0000;
+      --red-light: #A00000;
+      --black: #111111;
+      --white: #FAFAF8;
+      --gray: #888;
+      --border: #D8D0C8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 24px 40px;
+      position: relative;
+      background: var(--white);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 79px,
+        rgba(139,0,0,0.04) 80px
+      );
+      pointer-events: none;
+    }
+
+    .hero-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.2s forwards;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(42px, 9vw, 88px);
+      font-weight: 300;
+      line-height: 1.0;
+      letter-spacing: -0.5px;
+      color: var(--black);
+      opacity: 0;
+      animation: fadeUp 0.9s ease 0.4s forwards;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--red);
+    }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(18px, 3.5vw, 26px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--gray);
+      margin-top: 12px;
+      opacity: 0;
+      animation: fadeUp 0.9s ease 0.55s forwards;
+    }
+
+    .hero-divider {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, var(--red), transparent);
+      margin: 32px auto;
+      opacity: 0;
+      animation: fadeIn 1s ease 0.7s forwards;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 48px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.9s ease 0.8s forwards;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .meta-icon {
+      font-size: 20px;
+      color: var(--red);
+    }
+
+    .meta-label {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gray);
+      font-weight: 500;
+    }
+
+    .meta-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--black);
+    }
+
+    .hero-cta {
+      margin-top: 44px;
+      opacity: 0;
+      animation: fadeUp 0.9s ease 1s forwards;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 40px;
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid var(--black);
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: var(--red);
+      border-color: var(--red);
+      color: var(--white);
+    }
+
+    /* ── CREDITS BAR ── */
+    .credits-bar {
+      background: var(--black);
+      color: rgba(255,255,255,0.55);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-align: center;
+      padding: 14px 24px;
+      font-weight: 400;
+      line-height: 1.8;
+    }
+
+    .credits-bar span { color: rgba(255,255,255,0.85); }
+
+    /* ── SECTION BASE ── */
+    section {
+      padding: 80px 24px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-size: 9px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--red);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(30px, 5vw, 48px);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 32px;
+      color: var(--black);
+    }
+
+    .section-title em { font-style: italic; color: var(--red); }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    @media (max-width: 600px) {
+      .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    .about-text p {
+      font-size: 14px;
+      line-height: 1.9;
+      color: #444;
+      margin-bottom: 16px;
+    }
+
+    .about-quote {
+      border-left: 2px solid var(--red);
+      padding: 20px 24px;
+      background: #F5F0EB;
+    }
+
+    .about-quote blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--black);
+      line-height: 1.5;
+    }
+
+    .about-quote cite {
+      display: block;
+      margin-top: 12px;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+      font-style: normal;
+    }
+
+    /* ── PROGRAMM ── */
+    .programm-section {
+      background: var(--black);
+      color: var(--white);
+      max-width: 100%;
+      padding: 80px 24px;
+    }
+
+    .programm-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .programm-section .section-eyebrow { color: var(--red); }
+    .programm-section .section-title { color: var(--white); }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 72px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(139,0,0,0.6) 10%, rgba(139,0,0,0.6) 90%, transparent);
+    }
+
+    @media (max-width: 500px) {
+      .timeline::before { left: 54px; }
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 0 24px;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: relative;
+      align-items: start;
+    }
+
+    @media (max-width: 500px) {
+      .timeline-item { grid-template-columns: 60px 1fr; }
+    }
+
+    .timeline-item:last-child { border-bottom: none; }
+
+    .timeline-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--red);
+      letter-spacing: 1px;
+      padding-top: 4px;
+      text-align: right;
+      padding-right: 16px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 68px;
+      top: 32px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--red);
+      border: 2px solid var(--black);
+    }
+
+    @media (max-width: 500px) {
+      .timeline-dot { left: 50px; }
+    }
+
+    .timeline-body { padding-left: 16px; }
+
+    .timeline-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .timeline-desc {
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+      letter-spacing: 0.3px;
+    }
+
+    .timeline-tag {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 4px 10px;
+      background: rgba(139,0,0,0.25);
+      color: #E88;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* ── LOCATION ── */
+    .location-card {
+      border: 1px solid var(--border);
+      padding: 40px;
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .location-icon-wrap {
+      width: 60px;
+      height: 60px;
+      background: var(--red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 24px;
+    }
+
+    .location-info h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+
+    .location-info p {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    .location-info a {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--red);
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px solid var(--red);
+      padding-bottom: 2px;
+      transition: opacity 0.2s;
+    }
+
+    .location-info a:hover { opacity: 0.6; }
+
+    /* ── TEAM ── */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-top: 16px;
+    }
+
+    .team-card {
+      border-top: 2px solid var(--red);
+      padding: 24px 0 0;
+    }
+
+    .team-role {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .team-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: 6px;
+    }
+
+    .team-link {
+      font-size: 11px;
+      color: var(--gray);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .team-link:hover { color: var(--red); border-color: var(--red); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0D0D0D;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 40px 24px;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      line-height: 2;
+    }
+
+    footer strong { color: rgba(255,255,255,0.75); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════ HERO ══════════ -->
+  <div class="hero">
+    <div class="hero-label">Fashion Event · Wolfsburg · 2026</div>
+    <h1 class="hero-title">Frauensache:<br><em>Stil im Wandel</em></h1>
+    <p class="hero-subtitle">Eine Nacht für Mode, Handwerk &amp; Verwandlung</p>
+    <div class="hero-divider"></div>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <div class="meta-icon">🗓</div>
+        <div class="meta-label">Datum</div>
+        <div class="meta-value">23. August 2026</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-icon">⏰</div>
+        <div class="meta-label">Beginn</div>
+        <div class="meta-value">18:00 Uhr</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-icon">📍</div>
+        <div class="meta-label">Ort</div>
+        <div class="meta-value">Schlossremise Wolfsburg</div>
+      </div>
+    </div>
+    <div class="hero-cta">
+      <a class="btn-primary" href="#programm">Programm entdecken</a>
+    </div>
+  </div>
+
+  <!-- ══════════ CREDITS BAR ══════════ -->
+  <div class="credits-bar">
+    Konzept &amp; Design: <span>Naira Franke-Sargsyan</span> &nbsp;·&nbsp;
+    Make-up &amp; Styling: <span>Antonella Zaccaria</span> &nbsp;·&nbsp;
+    Fotografie: <span>Małgorzata Sokała · diefotograf.in</span>
+  </div>
+
+  <!-- ══════════ ABOUT ══════════ -->
+  <section id="about">
+    <div class="reveal">
+      <div class="section-eyebrow">Über das Event</div>
+      <h2 class="section-title">Mode als <em>Ausdruck</em><br>von Wandel &amp; Kraft</h2>
+    </div>
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <p>
+          „Frauensache: Stil im Wandel" ist mehr als eine Modenschau – es ist ein Abend,
+          der die Verbindung zwischen Handwerk, Identität und weiblicher Stärke feiert.
+        </p>
+        <p>
+          Erleben Sie drei Modenschauen, die Geschichten erzählen: von Tradition bis Moderne,
+          von Entwurf bis fertiger Kreation. Zwischen den Shows öffnen sich Räume für Begegnung,
+          Austausch und Einblick in den kreativen Prozess.
+        </p>
+        <p>
+          Der Abend endet mit einer unvergesslichen Überraschung.
+        </p>
+      </div>
+      <div class="about-quote">
+        <blockquote>
+          „Mode ist nicht, was man trägt –<br>
+          sie ist, wer man werden kann."
+        </blockquote>
+        <cite>Naira Franke-Sargsyan, Designerin</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ PROGRAMM ══════════ -->
+  <div class="programm-section" id="programm">
+    <div class="programm-inner">
+      <div class="reveal">
+        <div class="section-eyebrow">Ablauf des Abends</div>
+        <h2 class="section-title">Das <em>Programm</em></h2>
+      </div>
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+          <div class="timeline-num">18:00</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-body">
+            <div class="timeline-title">Begrüßung mit Sekt</div>
+            <div class="timeline-desc">Ankommen, kennenlernen und in die Atmosphäre des Abends eintauchen. Ein Glas Sekt erwartet Sie beim Einlass.</div>
+            <div class="timeline-tag">Empfang</div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-num"></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-body">
+            <div class="timeline-title">1. Modenschau</div>
+            <div class="timeline-desc">Der erste Teil der Show eröffnet den Abend – eine sorgfältig kuratierte Kollektion voller Ausdruckskraft.</div>
+            <div class="timeline-tag">Show · Teil I</div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-num"></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-body">
+            <div class="timeline-title">Pause mit Sekt &amp; Snacks</div>
+            <div class="timeline-desc">Genießen Sie eine elegante Pause mit Getränken und kleinen Snacks – Zeit für erste Eindrücke und Gespräche.</div>
+            <div class="timeline-tag">Pause · I</div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-num"></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-body">
+            <div class="timeline-title">2. Modenschau</div>
+            <div class="timeline-desc">Der zweite Teil entfaltet die Bandbreite des Stils – zwischen klassischer Eleganz und moderner Kraft.</div>
+            <div class="timeline-tag">Show · Teil II</div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-num"></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-body">
+            <div class="timeline-title">Hinter den Kulissen: Entstehung &amp; Handwerk</div>
+            <div class="timeline-desc">Eine besondere Pause: Erfahren Sie mehr über den Arbeitsprozess, die Entwicklung und die Herstellung der Kollektionen. Direkter Austausch mit der Designerin.</div>
+            <div class="timeline-tag">Pause · II · Einblick</div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-num"></div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-body">
+            <div class="timeline-title">3. Modenschau &amp; Überraschung</div>
+            <div class="timeline-desc">Der krönende Abschluss des Abends. Die dritte Show gipfelt in einem unvergesslichen Moment – das <em style="color:#E88; font-family:'Cormorant Garamond',serif;">Überraschungskleid</em> erwartet Sie.</div>
+            <div class="timeline-tag">Show · Teil III · Finale</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ LOCATION ══════════ -->
+  <section id="location">
+    <div class="reveal">
+      <div class="section-eyebrow">Veranstaltungsort</div>
+      <h2 class="section-title">Schlossremise <em>Wolfsburg</em></h2>
+    </div>
+    <div class="location-card reveal">
+      <div class="location-icon-wrap">📍</div>
+      <div class="location-info">
+        <h3>Schlossremise Wolfsburg</h3>
+        <p>
+          Ein historischer Rahmen für einen außergewöhnlichen Abend.<br>
+          Schlossstraße 8 · 38448 Wolfsburg
+        </p>
+        <a href="https://maps.google.com/?q=Schlossremise+Wolfsburg" target="_blank" rel="noopener">
+          Route auf Google Maps →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ TEAM ══════════ -->
+  <section id="team" style="padding-top: 0;">
+    <div class="reveal">
+      <div class="section-eyebrow">Das Team</div>
+      <h2 class="section-title">Die <em>Menschen</em> hinter dem Event</h2>
+    </div>
+    <div class="team-grid reveal">
+      <div class="team-card">
+        <div class="team-role">Konzept &amp; Design</div>
+        <div class="team-name">Naira Franke-Sargsyan</div>
+      </div>
+      <div class="team-card">
+        <div class="team-role">Make-up &amp; Styling</div>
+        <div class="team-name">Antonella Zaccaria</div>
+      </div>
+      <div class="team-card">
+        <div class="team-role">Fotografie</div>
+        <div class="team-name">Małgorzata Sokała</div>
+        <a href="https://diefotograf.in" target="_blank" rel="noopener" class="team-link">diefotograf.in</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer>
+    <strong>Frauensache: Stil im Wandel</strong><br>
+    23. August 2026 · 18:00 Uhr · Schlossremise Wolfsburg<br><br>
+    © 2026 Naira Franke-Sargsyan · Alle Rechte vorbehalten
+  </footer>
+
+  <!-- ══════════ SCROLL REVEAL SCRIPT ══════════ -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
